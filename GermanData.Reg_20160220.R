@@ -8,6 +8,7 @@
 ##### Data
 
 german = read.table("c:/germandata.txt", header=T) 
+# If you do not covert data to factor, get a wrong model due to integer value.
 german$numcredits = factor(german$numcredits)
 german$residence = factor(german$residence)
 german$residpeople = factor(german$residpeople)
