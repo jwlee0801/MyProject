@@ -30,6 +30,7 @@ heatmap(x, main="Heatmap")
 library(OutlierD)
 ?OutlierD
 install.packages("MatrixModels")
+#install anothor packages
 library(MatrixModels)
 data(lcms)
 x <- log2(lcms) #log2-tranformation, do normalization if necessary
