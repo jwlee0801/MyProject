@@ -45,14 +45,16 @@ library(rpart)
 set.seed(1234)
 i = sample(1:nrow(german), round(nrow(german)*0.7)) 
 german.train = german[i,] # training data (70%)
-german.test = german[-i,] # testd ata (30%)
+german.test = german[-i,] # test data (30%)
 
 my.control = rpart.control(xval=10, cp=0, minsplit=5)
 fit.tree = rpart(y ~ ., data = german.train, method="class", control=my.control)
-ii = which.min(fit.tree$cp[,4]) #find min xerror
+#start prune
+ii = which.min(fit.tree$cp[,4]) #find min xerror; set prune point
 fit.prun.tree = prune(fit.tree, cp = fit.tree$cp[ii,1])
 
 p.test.tree = predict(fit.prun.tree, newdata=german.test, type="prob")[,2] #probabilities
+#levels(german$y)[2] is good, levels(german$y)[1] is bad
 yhat.test.tree = ifelse(p.test.tree > threshold, levels(german$y)[2], levels(german$y)[1])
 
 tab = table(german.test$y, yhat.test.tree, dnn=c("Observed","Predicted"))
