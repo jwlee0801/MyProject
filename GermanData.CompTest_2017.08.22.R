@@ -65,7 +65,8 @@ tab[,2]/apply(tab, 1, sum) #specificity/sensitivity
 
 
 ##### Bagging
-
+# no prune
+# cannot plot
 library(rpart)
 library(adabag)
 
@@ -88,7 +89,8 @@ tab[,2]/apply(tab, 1, sum) #specificity/sensitivity
 
 
 ##### Boosting
-
+# no prune
+# cannot plot
 library(rpart)
 library(adabag)
 
@@ -111,7 +113,8 @@ tab[,2]/apply(tab, 1, sum) #specificity/sensitivity
 
 
 ##### Random Forest
-
+# no prune
+# cannot plot
 library(randomForest)
 
 set.seed(1234)
