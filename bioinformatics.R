@@ -41,3 +41,11 @@ fit3 <- OutlierD(x1=x[,1], x2=x[,2], method="nonlin")
 fit4 <- OutlierD(x1=x[,1], x2=x[,2], method="nonpar")
 
 fit3$x[1:10,]
+
+plot(fit3$x$A,fit3$x$M,pch=".",xlab="A",ylab="M")
+i <- sort.list(fit3$x$A)
+lines(fit3$x$A[i],fit3$x$Q3[i],lty=2,col = "BLUE")
+lines(fit3$x$A[i],fit3$x$Q1[i],lty=2,col = "BLUE")
+lines(fit3$x$A[i],fit3$x$LB[i],lty=1,col = "RED")
+lines(fit3$x$A[i],fit3$x$UB[i],lty=1,col = "RED")
+title("Nonlinear(LC/MS)")
